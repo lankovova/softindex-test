@@ -34,20 +34,27 @@ export default class From extends React.Component {
         const value = target.type === 'checkbox' ? target.checked : target.value.trim();
 
         // Skip if no input value at all
-        if (value === '') return;
+        if (value === ' ') {
+            console.log('skip');
+            return;
+        }
 
         switch (target.name) {
             case 'firstName':
             case 'lastName': {
                 if (!onlyLetters(value)) {
-                    console.log('Wrong field');
+                    target.style.borderColor = 'red';
+                } else {
+                    target.style.borderColor = 'green';
                 }
                 break;
             }
             case 'phone':
             case 'age': {
                 if (!onlyDigits(value)) {
-                    console.log('Wrong field');
+                    target.style.borderColor = 'red';
+                } else {
+                    target.style.borderColor = 'green';
                 }
                 break;
             }
@@ -72,6 +79,7 @@ export default class From extends React.Component {
             <form onSubmit={this.handleSubmit} className="Form">
                 {/* TODO: Extract textInput element from here */}
                 <input
+                    className="FormRow FormInput"
                     type="text"
                     name="firstName"
                     value={this.state.firstName}
@@ -79,6 +87,7 @@ export default class From extends React.Component {
                     required
                 />
                 <input
+                    className="FormRow FormInput"
                     type="text"
                     name="lastName"
                     value={this.state.lastName}
@@ -86,13 +95,14 @@ export default class From extends React.Component {
                     required
                 />
                 <input
+                    className="FormRow FormInput"
                     type="text"
                     name="phone"
                     value={this.state.phone}
                     onChange={this.handleChange}
                     required
                 />
-                <label htmlFor="genderField">
+                <label className="FormCheckbox" htmlFor="genderField">
                     <input
                         type="checkbox"
                         name="gender"
@@ -104,13 +114,14 @@ export default class From extends React.Component {
                     {(this.state.gender) ? 'Male' : 'Female'}
                 </label>
                 <input
+                    className="FormRow FormInput"
                     type="number"
                     name="age"
                     value={this.state.age}
                     onChange={this.handleChange}
                     required
                 />
-                <input type="submit" value="Submit" />
+                <input className="FormSubmit" type="submit" value="Submit" />
             </form>
         );
     }

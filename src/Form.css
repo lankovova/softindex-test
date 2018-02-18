@@ -1,5 +1,37 @@
 .Form {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
+
+    background-color:rgb(122, 0, 146);
+    border-radius: 10px;
+}
+
+.FormRow {
+    padding: 5px 10px;
+    margin: 5px 0;
+}
+
+.FormInput {
+    outline: none;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+/* Simulate outline */
+input[type=text]:focus {
+    border-color: #0079ff;
+}
+
+.FormCheckbox {
+    padding: 5px 10px;
+    color: white;
+}
+
+.FormSubmit {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px 0;
+    background-color: lightgreen;
 }
