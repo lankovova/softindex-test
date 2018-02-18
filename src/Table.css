@@ -16,6 +16,9 @@
     text-align: center;
     font-size: 14px;
 }
+.TableItem > div:first-child {
+    width: 50px;
+}
 .TableItem > div:last-child {
     width: 50px;
     cursor: pointer;

@@ -4,6 +4,7 @@ import './Table.css';
 function TableItem({ onItemDelete, user }) {
     return (
         <div className="TableItem">
+            <div>{user.id}</div>
             <div>{user.firstName}</div>
             <div>{user.lastName}</div>
             <div>{user.phone}</div>
@@ -13,7 +14,6 @@ function TableItem({ onItemDelete, user }) {
                 onClick={() => onItemDelete(user.id)}
                 role="button"
                 aria-hidden
-                // tabIndex="0"
             >
                 &#10005;
             </div>
