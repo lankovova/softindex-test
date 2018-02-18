@@ -1,4 +1,5 @@
 import React from 'react';
+import Form from './Form';
 import Table from './Table';
 import './App.css';
 
@@ -35,18 +36,38 @@ export default class App extends React.Component {
             ],
         };
 
+        this.onUserAdd = this.onUserAdd.bind(this);
         this.onUserDelete = this.onUserDelete.bind(this);
     }
 
+    onUserAdd(user) {
+        this.setState((prevState) => {
+            const userToAdd = Object.assign({}, user);
+            userToAdd.id = prevState.users.length + 1;
+
+            return {
+                users: [
+                    ...prevState.users,
+                    userToAdd,
+                ],
+            };
+        });
+    }
+
     onUserDelete(userId) {
-        this.setState(prevState => ({
-            users: prevState.users.filter(user => user.id !== userId),
-        }));
+        this.setState(prevState => (
+            {
+                users: prevState.users.filter(user => user.id !== userId),
+            }
+        ));
     }
 
     render() {
         return (
             <div className="App">
+                <Form
+                    onSubmit={this.onUserAdd}
+                />
                 <Table
                     onItemDelete={this.onUserDelete}
                     users={this.state.users}

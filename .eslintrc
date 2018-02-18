@@ -8,6 +8,8 @@
         "import/no-extraneous-dependencies": ["off"],
         "react/prop-types": ["off"],
         "react/jsx-indent-props": ["off"],
+        "react/no-unused-state": ["off"],
+        "no-empty": ["warn"],
         "jsx-a11y/click-events-have-key-events": ["off"],
         "class-methods-use-this" : ["off"],
         "no-trailing-spaces" : ["warn"],
