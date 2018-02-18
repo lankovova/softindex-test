@@ -1,6 +1,5 @@
 import React from 'react';
 import { onlyDigits, onlyLetters } from './utils';
-import Checkbox from './Checkbox';
 import './Form.css';
 
 export default class From extends React.Component {
@@ -15,13 +14,8 @@ export default class From extends React.Component {
             age: '20',
         };
 
-        this.onToggleCheckbox = this.onToggleCheckbox.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    onToggleCheckbox(isChecked) {
-        this.setState({ gender: isChecked });
     }
 
     // Reset form fields
@@ -98,12 +92,17 @@ export default class From extends React.Component {
                     onChange={this.handleChange}
                     required
                 />
-                <Checkbox
-                    label="Female"
-                    labelOnCheck="Male"
-                    isChecked={this.state.gender}
-                    onToggleCheckbox={this.onToggleCheckbox}
-                />
+                <label htmlFor="genderField">
+                    <input
+                        type="checkbox"
+                        name="gender"
+                        id="genderField"
+                        checked={this.state.gender ? 'checked' : ''}
+                        value={this.state.gender}
+                        onChange={this.handleChange}
+                    />
+                    {(this.state.gender) ? 'Male' : 'Female'}
+                </label>
                 <input
                     type="number"
                     name="age"
