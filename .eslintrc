@@ -1,0 +1,19 @@
+{
+    "extends":["airbnb"],
+    "rules": {
+        "no-console": 0,
+        "linebreak-style": ["error", "windows"],
+        "indent": ["warn", 4],
+        "react/jsx-indent": ["warn", 4],
+        "import/no-extraneous-dependencies": ["off"],
+        "react/prop-types": ["off"],
+        "react/jsx-indent-props": ["off"],
+        "jsx-a11y/click-events-have-key-events": ["off"],
+        "class-methods-use-this" : ["warn"],
+        "no-trailing-spaces" : ["warn"],
+        "comma-dangle": ["warn", "always-multiline"]
+    },
+    "env": {
+        "browser": true
+    }
+}

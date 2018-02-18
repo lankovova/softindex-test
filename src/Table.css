@@ -1,0 +1,23 @@
+.Table {
+    max-width: 600px;
+    width: 100%;
+}
+
+.TableItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.TableItem:nth-child(odd) { background: lightblue; }
+.TableItem:nth-child(even) { background: lightgoldenrodyellow; }
+
+.TableItem > div {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+.TableItem > div:last-child {
+    width: 50px;
+    cursor: pointer;
+    user-select: none;
+}
