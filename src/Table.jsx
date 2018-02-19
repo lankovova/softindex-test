@@ -1,51 +1,8 @@
 import React from 'react';
+import TableHeader from './TableHeader';
+import TableContent from './TableContent';
 import { sortArrayByProperty } from './utils';
 import './Table.css';
-
-function TableItem({ onItemDelete, user }) {
-    return (
-        <div className="TableItem">
-            <div>{user.id}</div>
-            <div>{user.firstName}</div>
-            <div>{user.lastName}</div>
-            <div>{user.phone}</div>
-            <div>{user.gender ? 'male' : 'female'}</div>
-            <div>{user.age}</div>
-            <div
-                onClick={() => onItemDelete(user.id)}
-                role="button"
-                aria-hidden
-            >
-                &#10005;
-            </div>
-        </div>
-    );
-}
-
-function TableHeaderItem({
-    title,
-    onClick,
-    isSortedByThis,
-    isReversed,
-}) {
-    let className = 'TabelHeader-Item';
-
-    if (isSortedByThis) {
-        className += ' sorted';
-        if (isReversed) className += ' reversed';
-    }
-
-    return (
-        <div
-            className={className}
-            role="button"
-            aria-hidden
-            onClick={() => onClick()}
-        >
-            {title}
-        </div>
-    );
-}
 
 export default class Table extends React.Component {
     constructor(props) {
@@ -55,6 +12,8 @@ export default class Table extends React.Component {
             sortedBy: 'id',
             reversed: false,
         };
+
+        this.sortBy = this.sortBy.bind(this);
     }
 
     sortBy(sortByWhat) {
@@ -72,42 +31,17 @@ export default class Table extends React.Component {
             usersList.reverse();
         }
 
-        const tableHeaderItems = [
-            { title: '#', propName: 'id' },
-            { title: 'First name', propName: 'firstName' },
-            { title: 'Last name', propName: 'lastName' },
-            { title: 'Phone', propName: 'phone' },
-            { title: 'Gender', propName: 'gender' },
-            { title: 'Age', propName: 'age' },
-        ];
-
         return (
             <div className="Table">
-                <div className="TableHeader TableItem">
-                    {
-                        tableHeaderItems.map(item => (
-                            <TableHeaderItem
-                                key={item.propName.toString()}
-                                isSortedByThis={item.propName === this.state.sortedBy}
-                                isReversed={this.state.reversed}
-                                title={item.title}
-                                onClick={() => this.sortBy(item.propName)}
-                            />
-                        ))
-                    }
-                    <div className="TabelHeader-Item">Action</div>
-                </div>
-                <div className="TableContents">
-                    {
-                        usersList.map(user => (
-                            <TableItem
-                                onItemDelete={onItemDelete}
-                                key={user.id}
-                                user={user}
-                            />
-                        ))
-                    }
-                </div>
+                <TableHeader
+                    sortTableBy={this.sortBy}
+                    sortedBy={this.state.sortedBy}
+                    isReversed={this.state.reversed}
+                />
+                <TableContent
+                    onItemDelete={onItemDelete}
+                    items={usersList}
+                />
             </div>
         );
     }

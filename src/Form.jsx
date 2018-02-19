@@ -61,7 +61,6 @@ export default class From extends React.Component {
             default: { break; }
         }
 
-        // FIXME: Update field
         this.setState({ [target.name]: value });
     }
 

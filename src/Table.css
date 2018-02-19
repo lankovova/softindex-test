@@ -21,38 +21,3 @@
     width: 10%;
     cursor: pointer;
 }
-
-.TableHeader .TabelHeader-Item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.TableHeader .TabelHeader-Item {
-    cursor: pointer;
-    color: rgb(158, 158, 158);
-    transition: color 100ms ease-in-out;
-    user-select: none;
-}
-.TableHeader .TabelHeader-Item:hover,
-.TableHeader .TabelHeader-Item:hover.sorted::after {
-    color: black;
-}
-.TableHeader .TabelHeader-Item:last-child {
-    color: rgb(158, 158, 158);
-    cursor: default;
-    user-select: none;
-}
-.TableHeader .TabelHeader-Item.sorted::after {
-    transition: color 100ms ease-in-out;
-    content: ">";
-    font-size: 16px;
-    margin-left: 3px;
-    color: lightgrey;
-    transform: rotate(90deg);
-}
-.TableHeader .TabelHeader-Item.sorted.reversed::after {
-    transform: rotate(270deg);
-}
-
-.TableContents .TableItem:nth-child(odd) { background: lightblue; }
-.TableContents .TableItem:nth-child(even) { background: lightgoldenrodyellow; }

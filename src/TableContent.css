@@ -1,0 +1,2 @@
+.TableContent .TableItem:nth-child(odd) { background: lightblue; }
+.TableContent .TableItem:nth-child(even) { background: lightgoldenrodyellow; }
