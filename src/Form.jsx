@@ -33,12 +33,6 @@ export default class From extends React.Component {
         const { target } = event;
         const value = target.type === 'checkbox' ? target.checked : target.value.trim();
 
-        // Skip if no input value at all
-        if (value === '') {
-            console.log('skip');
-            // return;
-        }
-
         switch (target.name) {
             case 'firstName':
             case 'lastName': {
