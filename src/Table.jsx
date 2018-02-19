@@ -24,9 +24,7 @@ export default class Table extends React.Component {
     }
 
     render() {
-        const { onItemDelete, users } = this.props;
-
-        const usersList = sortArrayByProperty(users, this.state.sortedBy);
+        const usersList = sortArrayByProperty(this.props.users, this.state.sortedBy);
         if (this.state.reversed) {
             usersList.reverse();
         }
@@ -40,7 +38,7 @@ export default class Table extends React.Component {
                 />
                 <TableContent
                     items={usersList}
-                    onItemDelete={onItemDelete}
+                    onItemDelete={this.props.onItemDelete}
                 />
             </div>
         );
