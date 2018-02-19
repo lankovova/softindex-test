@@ -2,7 +2,6 @@ import React from 'react';
 import './TableHeader.css';
 
 export default function TableHeader({ sortTableBy, sortedBy, isReversed }) {
-    // TODO: Move this to Table component
     const tableHeaderItems = [
         { title: '#', propName: 'id' },
         { title: 'First name', propName: 'firstName' },
