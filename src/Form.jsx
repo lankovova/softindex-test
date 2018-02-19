@@ -33,6 +33,13 @@ export default class From extends React.Component {
         const { target } = event;
         const value = target.type === 'checkbox' ? target.checked : target.value.trim();
 
+        this.setState({ [target.name]: value });
+
+        if (value === '') {
+            target.style.borderColor = '';
+            return;
+        }
+
         switch (target.name) {
             case 'firstName':
             case 'lastName': {
@@ -54,8 +61,6 @@ export default class From extends React.Component {
             }
             default: { break; }
         }
-
-        this.setState({ [target.name]: value });
     }
 
     handleSubmit(formSubmitEvent) {
