@@ -15,3 +15,17 @@ export function onlyDigits(string) {
 export function onlyLetters(string) {
     return /^[a-zA-Z]+$/.test(string);
 }
+
+/**
+ * Sorting array of objects by specific property
+ * @param {Object[]} whatToSort array to Sort
+ * @param {String} sortByWhat Property to sort by
+ * @returns {Object[]} Returns sorted array
+ */
+export function sortArrayByProperty(whatToSort, sortByWhat) {
+    return whatToSort.slice().sort((a, b) => {
+        if (a[sortByWhat] < b[sortByWhat]) return -1;
+        if (a[sortByWhat] > b[sortByWhat]) return 1;
+        return 0;
+    });
+}

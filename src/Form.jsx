@@ -34,9 +34,9 @@ export default class From extends React.Component {
         const value = target.type === 'checkbox' ? target.checked : target.value.trim();
 
         // Skip if no input value at all
-        if (value === ' ') {
+        if (value === '') {
             console.log('skip');
-            return;
+            // return;
         }
 
         switch (target.name) {
@@ -79,25 +79,28 @@ export default class From extends React.Component {
             <form onSubmit={this.handleSubmit} className="Form">
                 {/* TODO: Extract textInput element from here */}
                 <input
-                    className="FormRow FormInput"
+                    className="FormInput"
                     type="text"
                     name="firstName"
+                    placeholder="First name"
                     value={this.state.firstName}
                     onChange={this.handleChange}
                     required
                 />
                 <input
-                    className="FormRow FormInput"
+                    className="FormInput"
                     type="text"
                     name="lastName"
+                    placeholder="Last name"
                     value={this.state.lastName}
                     onChange={this.handleChange}
                     required
                 />
                 <input
-                    className="FormRow FormInput"
+                    className="FormInput"
                     type="text"
                     name="phone"
+                    placeholder="Phone"
                     value={this.state.phone}
                     onChange={this.handleChange}
                     required
@@ -114,9 +117,10 @@ export default class From extends React.Component {
                     {(this.state.gender) ? 'Male' : 'Female'}
                 </label>
                 <input
-                    className="FormRow FormInput"
-                    type="number"
+                    className="FormInput"
+                    type="text"
                     name="age"
+                    placeholder="Age"
                     value={this.state.age}
                     onChange={this.handleChange}
                     required
