@@ -1,15 +1,15 @@
 import React from 'react';
 import './TableContent.css';
 
-export default function TableContent({ onItemDelete, items }) {
+export default function TableContent({ items, onItemDelete }) {
     return (
         <div className="TableContent">
             {
                 items.map(item => (
                     <TableUserItem
-                        onItemDelete={onItemDelete}
                         key={item.id}
                         user={item}
+                        onItemDelete={onItemDelete}
                     />
                 ))
             }
@@ -17,7 +17,7 @@ export default function TableContent({ onItemDelete, items }) {
     );
 }
 
-function TableUserItem({ onItemDelete, user }) {
+function TableUserItem({ user, onItemDelete }) {
     return (
         <div className="TableItem">
             <div>{user.id}</div>

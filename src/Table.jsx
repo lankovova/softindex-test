@@ -39,8 +39,8 @@ export default class Table extends React.Component {
                     isReversed={this.state.reversed}
                 />
                 <TableContent
-                    onItemDelete={onItemDelete}
                     items={usersList}
+                    onItemDelete={onItemDelete}
                 />
             </div>
         );
