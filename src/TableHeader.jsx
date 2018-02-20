@@ -35,16 +35,15 @@ function TableHeaderItem({
     isSortedByThis,
     isReversed,
 }) {
-    let className = 'TabelHeader-Item TableCell';
-
+    let arrowClass = '';
     if (isSortedByThis) {
-        className += ' sorted';
-        if (isReversed) className += ' reversed';
+        arrowClass += ' sorted';
+        if (isReversed) arrowClass += ' reversed';
     }
 
     return (
         <div
-            className={className}
+            className={`TabelHeader-Item TableCell${arrowClass}`}
             role="button"
             aria-hidden
             onClick={() => onClick()}
