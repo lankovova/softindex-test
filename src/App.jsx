@@ -7,12 +7,10 @@ export default class App extends React.Component {
     constructor() {
         super();
 
-        // Get users from LS
-        const usersFromLS = JSON.parse(localStorage.getItem('users')) || [];
-
         this.state = {
-            users: usersFromLS,
-            nextUserId: usersFromLS.length + 1,
+            // Get users info from LS
+            users: JSON.parse(localStorage.getItem('users')) || [],
+            nextUserId: JSON.parse(localStorage.getItem('nextUserId')) || 1,
         };
 
         this.onUserAdd = this.onUserAdd.bind(this);
@@ -34,6 +32,7 @@ export default class App extends React.Component {
         }, () => {
             // Update users in LS
             localStorage.setItem('users', JSON.stringify(this.state.users));
+            localStorage.setItem('nextUserId', JSON.stringify(this.state.nextUserId));
         });
     }
 
@@ -43,6 +42,7 @@ export default class App extends React.Component {
         }), () => {
             // Update users in LS
             localStorage.setItem('users', JSON.stringify(this.state.users));
+            localStorage.setItem('nextUserId', JSON.stringify(this.state.nextUserId));
         });
     }
 
