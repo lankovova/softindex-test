@@ -33,7 +33,6 @@ export default class Checkbox extends React.Component {
             <div>
                 <label className="FormCheckbox" htmlFor={label + labelOnCheck}>
                     <input
-                        // TODO: Add className for checkbox
                         type="checkbox"
                         name={name}
                         id={label + labelOnCheck}
