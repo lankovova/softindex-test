@@ -1,6 +1,6 @@
 import React from 'react';
-import Form from './Form';
-import Table from './Table';
+import UserForm from './UserForm';
+import UsersTable from './UsersTable';
 import './App.css';
 
 export default class App extends React.Component {
@@ -65,10 +65,10 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <Form
+                <UserForm
                     onSubmit={this.onUserAdd}
                 />
-                <Table
+                <UsersTable
                     onItemDelete={this.onUserDelete}
                     users={this.state.users}
                 />

@@ -21,6 +21,16 @@ input[type=text]:focus {
     border-color: #0079ff;
 }
 
+.has-error {
+    /* Important to override focus styles */
+    border-color: red !important;
+}
+.no-error {
+    /* Important to override focus styles */
+    border-color: green !important;
+}
+
+
 .FormCheckbox {
     padding: 5px 10px;
     font-size: 14px;

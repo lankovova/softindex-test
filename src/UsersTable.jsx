@@ -2,7 +2,7 @@ import React from 'react';
 import TableHeader from './TableHeader';
 import TableContent from './TableContent';
 import { sortArrayByProperty } from './utils';
-import './Table.css';
+import './UsersTable.css';
 
 export default class Table extends React.Component {
     constructor(props) {
