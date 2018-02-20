@@ -8,32 +8,8 @@ export default class App extends React.Component {
         super();
 
         this.state = {
-            users: [
-                {
-                    id: 1,
-                    firstName: 'John',
-                    lastName: 'Stone',
-                    phone: '5553555',
-                    gender: true,
-                    age: 24,
-                },
-                {
-                    id: 2,
-                    firstName: 'Mad',
-                    lastName: 'Damon',
-                    phone: '333322211',
-                    gender: true,
-                    age: 26,
-                },
-                {
-                    id: 3,
-                    firstName: 'Kate',
-                    lastName: 'Gasoline',
-                    phone: '000999888',
-                    gender: false,
-                    age: 21,
-                },
-            ],
+            // Get users from LS
+            users: JSON.parse(localStorage.getItem('users')),
         };
 
         this.onUserAdd = this.onUserAdd.bind(this);
@@ -51,15 +27,19 @@ export default class App extends React.Component {
                     userToAdd,
                 ],
             };
+        }, () => {
+            // Update users in LS
+            localStorage.setItem('users', JSON.stringify(this.state.users));
         });
     }
 
     onUserDelete(userId) {
-        this.setState(prevState => (
-            {
-                users: prevState.users.filter(user => user.id !== userId),
-            }
-        ));
+        this.setState(prevState => ({
+            users: prevState.users.filter(user => user.id !== userId),
+        }), () => {
+            // Update users in LS
+            localStorage.setItem('users', JSON.stringify(this.state.users));
+        });
     }
 
     render() {

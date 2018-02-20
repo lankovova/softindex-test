@@ -31,18 +31,6 @@ input[type=text]:focus {
     border-color: green !important;
 }
 
-
-.FormCheckbox {
-    padding: 5px 10px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    user-select: none;
-}
-.FormCheckbox input[type="checkbox"] {
-    margin-right: 5px;
-}
-
 .FormSubmit {
     border: none;
     border-radius: 5px;

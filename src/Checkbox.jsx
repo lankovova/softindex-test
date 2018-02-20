@@ -1,4 +1,5 @@
 import React from 'react';
+import './Checkbox.css';
 
 export default class Checkbox extends React.Component {
     constructor(props) {
@@ -29,9 +30,10 @@ export default class Checkbox extends React.Component {
         const { name, label, labelOnCheck } = this.props;
 
         return (
-            <div className="checkbox">
-                <label htmlFor={label + labelOnCheck}>
+            <div>
+                <label className="FormCheckbox" htmlFor={label + labelOnCheck}>
                     <input
+                        // TODO: Add className for checkbox
                         type="checkbox"
                         name={name}
                         id={label + labelOnCheck}
