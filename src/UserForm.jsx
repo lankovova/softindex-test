@@ -69,11 +69,11 @@ export default class UserForm extends React.Component {
         // Common validation rules for all fields
         if (value.length === 0) {
             hasError = true;
-            errorMessages.push('Field length must be greater that 0');
+            errorMessages.push('Field length must be greater than 0');
         }
         if (value.length > 50) {
             hasError = true;
-            errorMessages.push('Field length must be less or equal 50');
+            errorMessages.push('Field length must be lower or equal 50');
         }
 
         switch (name) {
@@ -81,25 +81,25 @@ export default class UserForm extends React.Component {
             case 'lastName': {
                 if (!validName(value)) {
                     hasError = true;
-                    errorMessages.push('Name field could contain only letters, hyphens and single quotes');
+                    errorMessages.push('Name field must contain only letters, hyphens or single quotes');
                 }
                 break;
             }
             case 'phone': {
                 if (!onlyNumbers(value)) {
                     hasError = true;
-                    errorMessages.push('Phone field could contain only numbers');
+                    errorMessages.push('Phone field must contain only numbers');
                 }
                 break;
             }
             case 'age': {
                 if (!onlyNumbers(value)) {
                     hasError = true;
-                    errorMessages.push('Age field could contain only numbers');
+                    errorMessages.push('Age field must contain only numbers');
                 }
                 if (value.length > 3) {
                     hasError = true;
-                    errorMessages.push('Age field length should be less or equal 3');
+                    errorMessages.push('Age field length must be lower or equal 3');
                 }
                 break;
             }
