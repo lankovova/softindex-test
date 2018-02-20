@@ -12,7 +12,7 @@ export default function TableHeader({ sortTableBy, sortedBy, isReversed }) {
     ];
 
     return (
-        <div className="TableHeader TableItem">
+        <div className="TableHeader TableRow">
             {
                 tableHeaderItems.map(item => (
                     <TableHeaderItem
@@ -24,7 +24,7 @@ export default function TableHeader({ sortTableBy, sortedBy, isReversed }) {
                     />
                 ))
             }
-            <div className="TabelHeader-Item">Action</div>
+            <div className="TabelHeader-Item TableCell">Action</div>
         </div>
     );
 }
@@ -35,7 +35,7 @@ function TableHeaderItem({
     isSortedByThis,
     isReversed,
 }) {
-    let className = 'TabelHeader-Item';
+    let className = 'TabelHeader-Item TableCell';
 
     if (isSortedByThis) {
         className += ' sorted';

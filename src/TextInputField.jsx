@@ -1,4 +1,5 @@
 import React from 'react';
+import './TextInputField.css';
 
 export default class TextInputField extends React.Component {
     constructor(props) {
@@ -46,7 +47,7 @@ export default class TextInputField extends React.Component {
                 />
                 {
                     errors.map(error => (
-                        <div className="error" key={error.toString()}>{error}</div>
+                        <div className="InputError" key={error.toString()}>{error}</div>
                     ))
                 }
             </div>

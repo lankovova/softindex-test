@@ -19,14 +19,15 @@ export default function TableContent({ items, onItemDelete }) {
 
 function TableUserItem({ user, onItemDelete }) {
     return (
-        <div className="TableItem">
-            <div>{user.id}</div>
-            <div>{user.firstName}</div>
-            <div>{user.lastName}</div>
-            <div>{user.phone}</div>
-            <div>{user.gender ? 'male' : 'female'}</div>
-            <div>{user.age}</div>
+        <div className="TableRow">
+            <div className="TableCell">{user.id}</div>
+            <div className="TableCell">{user.firstName}</div>
+            <div className="TableCell">{user.lastName}</div>
+            <div className="TableCell">{user.phone}</div>
+            <div className="TableCell">{user.gender ? 'male' : 'female'}</div>
+            <div className="TableCell">{user.age}</div>
             <div
+                className="TableCell"
                 onClick={() => onItemDelete(user.id)}
                 role="button"
                 aria-hidden

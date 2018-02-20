@@ -7,27 +7,33 @@
     align-items: center;
     justify-content: center;
 }
+
 .TablePhrase {
     font-size: 14px;
     text-transform: uppercase;
 }
+
 .Table {
     width: 100%;
 }
-.TableItem {
+
+.Table .TableRow {
     display: flex;
     justify-content: space-between;
     padding: 10px;
 }
-.TableItem > div {
+
+.Table .TableRow .TableCell {
     width: calc(85% / 5);
     text-align: center;
     font-size: 12px;
 }
-.TableItem > div:first-child {
+
+.Table .TableRow .TableCell:first-child {
     width: 5%;
 }
-.TableItem > div:last-child {
+
+.Table .TableRow .TableCell:last-child {
     width: 10%;
     cursor: pointer;
 }

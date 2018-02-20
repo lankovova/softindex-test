@@ -1,0 +1,33 @@
+.FormInput {
+    width: 300px;
+    padding: 3px 5px;
+    margin: 5px 0;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    border-color: lightgrey;
+    color:rgb(54, 54, 54);
+    transition: border-color 150ms ease-in-out;
+}
+
+/* Simulate outline */
+input[type=text]:focus {
+    border-color: #0079ff;
+}
+
+.has-error {
+    /* Important to override focus styles */
+    border-color: red !important;
+}
+.no-error {
+    /* Important to override focus styles */
+    border-color: green !important;
+}
+
+.InputError {
+    font-size: 10px;
+    line-height: 11px;
+    color: red;
+    padding: 0 5px;
+}
