@@ -5,6 +5,7 @@
 }
 
 .FormInput {
+    width: 300px;
     padding: 3px 5px;
     margin: 5px 0;
     outline: none;
@@ -61,4 +62,11 @@ input[type=text]:focus {
 }
 .FormSubmit:hover {
     background-color: #5695fc;
+}
+
+.error {
+    font-size: 10px;
+    line-height: 11px;
+    color: red;
+    padding: 0 5px;
 }

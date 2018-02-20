@@ -3,17 +3,17 @@
  * @param {String} string String to check
  * @returns {Boolean} Returns true if string contains only digits, otherwise - returns false
  */
-export function onlyDigits(string) {
+export function onlyNumbers(string) {
     return /^\d+$/.test(string);
 }
 
 /**
- * Check if string contains only letters
+ * Check if string is valid name
  * @param {String} string String to check
- * @returns {Boolean} Returns true if string contains only letters, otherwise - returns false
+ * @returns {Boolean} Returns true if string is valid name, otherwise - returns false
  */
-export function onlyLetters(string) {
-    return /^[a-zA-Z]+$/.test(string);
+export function validName(string) {
+    return /^[a-zA-Z-' ]+$/.test(string);
 }
 
 /**
@@ -29,3 +29,4 @@ export function sortArrayByProperty(whatToSort, sortByWhat) {
         return 0;
     });
 }
+

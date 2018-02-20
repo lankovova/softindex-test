@@ -13,7 +13,8 @@
         "jsx-a11y/click-events-have-key-events": ["off"],
         "class-methods-use-this" : ["off"],
         "no-trailing-spaces" : ["warn"],
-        "comma-dangle": ["warn", "always-multiline"]
+        "comma-dangle": ["warn", "always-multiline"],
+        "no-return-assign": ["off"]
     },
     "env": {
         "browser": true
