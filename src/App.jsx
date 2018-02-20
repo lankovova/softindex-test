@@ -7,9 +7,12 @@ export default class App extends React.Component {
     constructor() {
         super();
 
+        const usersFromLS = JSON.parse(localStorage.getItem('users')) || [];
+
         this.state = {
             // Get users from LS
-            users: JSON.parse(localStorage.getItem('users')) || [],
+            users: usersFromLS,
+            nextUserId: usersFromLS.length + 1,
         };
 
         this.onUserAdd = this.onUserAdd.bind(this);
@@ -19,13 +22,14 @@ export default class App extends React.Component {
     onUserAdd(user) {
         this.setState((prevState) => {
             const userToAdd = Object.assign({}, user);
-            userToAdd.id = prevState.users.length + 1;
+            userToAdd.id = prevState.nextUserId;
 
             return {
                 users: [
                     ...prevState.users,
                     userToAdd,
                 ],
+                nextUserId: prevState.nextUserId + 1,
             };
         }, () => {
             // Update users in LS
