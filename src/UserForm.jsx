@@ -161,7 +161,14 @@ export default class UserForm extends React.Component {
         formSubmitEvent.preventDefault();
 
         if (this.state.formIsValid) {
-            this.props.onSubmit(this.state);
+            const {
+                firstName, lastName, phone, gender, age,
+            } = this.state;
+
+            this.props.onSubmit({
+                firstName, lastName, phone, gender, age: +age,
+            });
+
             this.clearFields();
         } else {
             // Validate all fields to show errors
