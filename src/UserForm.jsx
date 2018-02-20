@@ -71,9 +71,9 @@ export default class UserForm extends React.Component {
             hasError = true;
             errorMessages.push('Field length must be greater than 0');
         }
-        if (value.length > 50) {
+        if (value.length > 25) {
             hasError = true;
-            errorMessages.push('Field length must be lower or equal 50');
+            errorMessages.push('Field length must be lower or equal 25');
         }
 
         switch (name) {
