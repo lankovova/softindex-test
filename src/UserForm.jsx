@@ -235,7 +235,7 @@ export default class UserForm extends React.Component {
                     errors={this.state.inputFieldsData.age.errors}
                     inputRef={el => this.inputFields.age = el}
                 />
-                <input className="FormSubmit" type="submit" value="Submit" />
+                <input className="FormSubmit" type="submit" value="Add user" />
             </form>
         );
     }
