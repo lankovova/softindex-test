@@ -7,10 +7,10 @@ export default class App extends React.Component {
     constructor() {
         super();
 
+        // Get users from LS
         const usersFromLS = JSON.parse(localStorage.getItem('users')) || [];
 
         this.state = {
-            // Get users from LS
             users: usersFromLS,
             nextUserId: usersFromLS.length + 1,
         };
