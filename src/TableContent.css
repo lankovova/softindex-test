@@ -1,2 +1,3 @@
-.TableContent .TableRow:nth-child(odd) { background: lightblue; }
-.TableContent .TableRow:nth-child(even) { background: lightgoldenrodyellow; }
+.TableContent .TableRow:nth-child(odd) {
+    background: #d5ffc4;
+}

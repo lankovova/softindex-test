@@ -1,7 +1,12 @@
+.TableHeader {
+    border-bottom: 1px solid rgb(105, 105, 105);
+}
+
 .TableHeader .TabelHeader-Item {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 900;
 }
 
 .TableHeader .TabelHeader-Item {
@@ -18,13 +23,14 @@
 
 .TableHeader .TabelHeader-Item:last-child {
     color: rgb(158, 158, 158);
-    cursor: default;
+    /* Important to rewrite table row style */
+    cursor: default !important;
     user-select: none;
 }
 
 .TableHeader .TabelHeader-Item.sorted::after {
     content: ">";
-    font-size: 16px;
+    font-size: 14px;
     margin-left: 3px;
     color: lightgrey;
     transform: rotate(90deg);
