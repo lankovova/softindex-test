@@ -30,16 +30,24 @@ export default class Table extends React.Component {
         }
 
         return (
-            <div className="Table">
-                <TableHeader
-                    sortTableBy={this.sortBy}
-                    sortedBy={this.state.sortedBy}
-                    isReversed={this.state.reversed}
-                />
-                <TableContent
-                    items={usersList}
-                    onItemDelete={this.props.onItemDelete}
-                />
+            <div className="TableWrapper">
+                {
+                    (this.props.users.length === 0)
+                        ? <div className="TablePhrase">No users</div>
+                        : (
+                            <div className="Table">
+                                <TableHeader
+                                    sortTableBy={this.sortBy}
+                                    sortedBy={this.state.sortedBy}
+                                    isReversed={this.state.reversed}
+                                />
+                                <TableContent
+                                    items={usersList}
+                                    onItemDelete={this.props.onItemDelete}
+                                />
+                            </div>
+                        )
+                }
             </div>
         );
     }

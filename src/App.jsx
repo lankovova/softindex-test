@@ -9,7 +9,7 @@ export default class App extends React.Component {
 
         this.state = {
             // Get users from LS
-            users: JSON.parse(localStorage.getItem('users')),
+            users: JSON.parse(localStorage.getItem('users')) || [],
         };
 
         this.onUserAdd = this.onUserAdd.bind(this);
