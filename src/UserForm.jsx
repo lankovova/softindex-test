@@ -1,4 +1,6 @@
 import React from 'react';
+import TextInputField from './TextInputField';
+import Checkbox from './Checkbox';
 import { onlyNumbers, validName } from './utils';
 import './UserForm.css';
 
@@ -15,9 +17,9 @@ export default class UserForm extends React.Component {
         this.state = {
             firstName: '',
             lastName: '',
-            gender: true,
             phone: '',
             age: '',
+            gender: true,
             formIsValid: false,
             inputFieldsData: {
                 firstName: {
@@ -42,49 +44,21 @@ export default class UserForm extends React.Component {
         // Object to store input fields refs
         this.inputFields = {};
 
-        this.handleUserInput = this.handleUserInput.bind(this);
+        this.handleUserCheckboxToggle = this.handleUserCheckboxToggle.bind(this);
+        this.handleUserTextInput = this.handleUserTextInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // Reset form fields
-    clearFields() {
-        this.setState({
-            firstName: '',
-            lastName: '',
-            gender: true,
-            phone: '',
-            age: '',
-            formIsValid: false,
-            inputFieldsData: {
-                firstName: {
-                    errors: [],
-                    state: INPUT_STATES.UNTOUCHED,
-                },
-                lastName: {
-                    errors: [],
-                    state: INPUT_STATES.UNTOUCHED,
-                },
-                phone: {
-                    errors: [],
-                    state: INPUT_STATES.UNTOUCHED,
-                },
-                age: {
-                    errors: [],
-                    state: INPUT_STATES.UNTOUCHED,
-                },
-            },
-        });
+    handleUserCheckboxToggle(name, value) {
+        this.setState({ [name]: value });
     }
 
-    handleUserInput(event) {
-        const { target } = event;
-        const { name } = target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+    handleUserTextInput(event) {
+        const { name, value } = event.target;
 
         this.setState(
             { [name]: value },
-            // Validate all fields except checkboxes
-            () => { if (target.type !== 'checkbox') this.validateField(name, value); }
+            () => { this.validateField(name, value); }
         );
     }
 
@@ -153,6 +127,36 @@ export default class UserForm extends React.Component {
         this.setState({ formIsValid });
     }
 
+    // Reset form fields
+    clearFields() {
+        this.setState({
+            firstName: '',
+            lastName: '',
+            phone: '',
+            age: '',
+            gender: true,
+            formIsValid: false,
+            inputFieldsData: {
+                firstName: {
+                    errors: [],
+                    state: INPUT_STATES.UNTOUCHED,
+                },
+                lastName: {
+                    errors: [],
+                    state: INPUT_STATES.UNTOUCHED,
+                },
+                phone: {
+                    errors: [],
+                    state: INPUT_STATES.UNTOUCHED,
+                },
+                age: {
+                    errors: [],
+                    state: INPUT_STATES.UNTOUCHED,
+                },
+            },
+        });
+    }
+
     handleSubmit(formSubmitEvent) {
         formSubmitEvent.preventDefault();
 
@@ -181,74 +185,49 @@ export default class UserForm extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit} className="Form">
-                {/* TODO: Extract textInput element from here */}
-                <input
-                    className={`FormInput ${this.inputStateClass(this.state.inputFieldsData.firstName.state)}`}
-                    type="text"
+                <TextInputField
                     name="firstName"
                     placeholder="First name"
-                    ref={el => this.inputFields.firstName = el}
+                    errorClass={this.inputStateClass(this.state.inputFieldsData.firstName.state)}
                     value={this.state.firstName}
-                    onChange={this.handleUserInput}
+                    handleChange={this.handleUserTextInput}
+                    errors={this.state.inputFieldsData.firstName.errors}
+                    inputRef={el => this.inputFields.firstName = el}
                 />
-                {
-                    this.state.inputFieldsData.firstName.errors.map(error => (
-                        <div className="error" key={error.toString()}>{error}</div>
-                    ))
-                }
-                <input
-                    className={`FormInput ${this.inputStateClass(this.state.inputFieldsData.lastName.state)}`}
-                    type="text"
+                <TextInputField
                     name="lastName"
                     placeholder="Last name"
-                    ref={el => this.inputFields.lastName = el}
+                    errorClass={this.inputStateClass(this.state.inputFieldsData.lastName.state)}
                     value={this.state.lastName}
-                    onChange={this.handleUserInput}
+                    handleChange={this.handleUserTextInput}
+                    errors={this.state.inputFieldsData.lastName.errors}
+                    inputRef={el => this.inputFields.lastName = el}
                 />
-                {
-                    this.state.inputFieldsData.lastName.errors.map(error => (
-                        <div className="error" key={error.toString()}>{error}</div>
-                    ))
-                }
-                <input
-                    className={`FormInput ${this.inputStateClass(this.state.inputFieldsData.phone.state)}`}
-                    type="text"
+                <TextInputField
                     name="phone"
                     placeholder="Phone"
-                    ref={el => this.inputFields.phone = el}
+                    errorClass={this.inputStateClass(this.state.inputFieldsData.phone.state)}
                     value={this.state.phone}
-                    onChange={this.handleUserInput}
+                    handleChange={this.handleUserTextInput}
+                    errors={this.state.inputFieldsData.phone.errors}
+                    inputRef={el => this.inputFields.phone = el}
                 />
-                {
-                    this.state.inputFieldsData.phone.errors.map(error => (
-                        <div className="error" key={error.toString()}>{error}</div>
-                    ))
-                }
-                <label className="FormCheckbox" htmlFor="genderField">
-                    <input
-                        type="checkbox"
-                        name="gender"
-                        id="genderField"
-                        checked={this.state.gender ? 'checked' : ''}
-                        value={this.state.gender}
-                        onChange={this.handleUserInput}
-                    />
-                    {(this.state.gender) ? 'Male' : 'Female'}
-                </label>
-                <input
-                    className={`FormInput ${this.inputStateClass(this.state.inputFieldsData.age.state)}`}
-                    type="text"
+                <Checkbox
+                    name="gender"
+                    label="Female"
+                    labelOnCheck="Male"
+                    isChecked={this.state.gender}
+                    onToggleCheckbox={this.handleUserCheckboxToggle}
+                />
+                <TextInputField
                     name="age"
                     placeholder="Age"
-                    ref={el => this.inputFields.age = el}
+                    errorClass={this.inputStateClass(this.state.inputFieldsData.age.state)}
                     value={this.state.age}
-                    onChange={this.handleUserInput}
+                    handleChange={this.handleUserTextInput}
+                    errors={this.state.inputFieldsData.age.errors}
+                    inputRef={el => this.inputFields.age = el}
                 />
-                {
-                    this.state.inputFieldsData.age.errors.map(error => (
-                        <div className="error" key={error.toString()}>{error}</div>
-                    ))
-                }
                 <input className="FormSubmit" type="submit" value="Submit" />
             </form>
         );

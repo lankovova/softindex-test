@@ -11,28 +11,29 @@ export default class Checkbox extends React.Component {
         this.onToggleCheckbox = this.onToggleCheckbox.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.setState({ isChecked: nextProps.isChecked });
+    componentWillReceiveProps({ isChecked }) {
+        this.setState({ isChecked });
     }
 
-    onToggleCheckbox() {
+    onToggleCheckbox(event) {
+        const { name } = event.target;
         this.setState((prevState) => {
             const newCheckState = !prevState.isChecked;
 
-            this.props.onToggleCheckbox(newCheckState);
+            this.props.onToggleCheckbox(name, newCheckState);
             return { isChecked: newCheckState };
         });
     }
 
     render() {
-        const { label, labelOnCheck } = this.props;
+        const { name, label, labelOnCheck } = this.props;
 
         return (
             <div className="checkbox">
                 <label htmlFor={label + labelOnCheck}>
                     <input
                         type="checkbox"
-                        name="gender"
+                        name={name}
                         id={label + labelOnCheck}
                         checked={this.state.isChecked ? 'checked' : ''}
                         value={this.state.isChecked}
