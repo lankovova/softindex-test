@@ -10,7 +10,7 @@ export default class App extends React.Component {
         this.state = {
             // Get users info from LS
             users: JSON.parse(localStorage.getItem('users')) || [],
-            nextUserId: JSON.parse(localStorage.getItem('nextUserId')) || 1,
+            nextUserId: JSON.parse(localStorage.getItem('nextUserId')) || 0,
         };
 
         this.onUserAdd = this.onUserAdd.bind(this);
